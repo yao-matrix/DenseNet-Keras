@@ -29,12 +29,8 @@ def DenseNet(nb_dense_block=4, growth_rate=48, nb_filter=96, reduction=0.0, drop
 
     # Handle Dimension Ordering for different backends
     global concat_axis
-    if K.image_dim_ordering() == 'tf':
-      concat_axis = 3
-      img_input = Input(shape=(224, 224, 3), name='data')
-    else:
-      concat_axis = 1
-      img_input = Input(shape=(3, 224, 224), name='data')
+    concat_axis = 3
+    img_input = Input(shape=(224, 224, 3), name='data')
 
     # From architecture for ImageNet (Table 1 in the paper)
     nb_filter = 96
